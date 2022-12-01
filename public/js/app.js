@@ -2080,13 +2080,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["user"],
@@ -2097,11 +2090,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendMessage: function sendMessage() {
-      this.$emit("messagesent", {
-        user: this.user,
-        message: this.newMessage
-      });
-      this.newMessage = "";
+      var empty = document.getElementById("btn-input").value;
+      if (typeof empty === 'string' && empty.trim().length === 0) {
+        alert("Field must not be empty");
+      } else {
+        this.$emit("messagesent", {
+          user: this.user,
+          message: this.newMessage
+        });
+        this.newMessage = "";
+      }
+      // }
     }
   }
 });
